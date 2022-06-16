@@ -23,7 +23,13 @@ ul {
 body {
   margin: 0;
 }
-
+.grid__upgrade {
+  display: flex; 
+  flex-wrap: wrap; 
+  align-items: 
+  flex-start; 
+  gap: 30px;
+}
 .container {
   max-width: 1100px;
   padding: 0 30px;
