@@ -1,7 +1,23 @@
-import { createElementMagic } from "./createElement.js";
+import { createElementMagic } from "./createElementMagic.js";
 
+const loadingImg = (url, description) => {
+    
+    return new Promise((resolve, reject) => {
+        const img = new Image();
+        img.width = 200;
+        img.src = url;
+        img.alt = description;
+        img.addEventListener('load', () => {
+            resolve(img)
+        });
+        img.addEventListener('error', (err) => {
+            reject(new Error(err))
+        });
 
-export const createCardPhoto = (data) => {
+    })
+}
+
+export const createCardPhoto = async (data) => {
  
     const card = createElementMagic('li', {
         className: 'card'
@@ -15,11 +31,8 @@ export const createCardPhoto = (data) => {
     });
    
 
-    const photo = new Image();
-    photo.width = '200';
-    photo.height = '200';
-    photo.src = data.urls.small;
-    photo.alt = data.alt_description;
+    const photo = await loadingImg(data.urls.small, data.alt_description); 
+    
 
     const author = createElementMagic('a', {
         className: 'card__author',
@@ -44,7 +57,7 @@ export const createCardPhoto = (data) => {
     
 
 
-    const downloadLink = document.createElement('a', {
+    const downloadLink = createElementMagic('a', {
 
         className: 'card__download',
         href: data.links.download,
