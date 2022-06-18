@@ -4,4 +4,3 @@
     return element;
 }
 
-createElementMagic();

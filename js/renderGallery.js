@@ -19,7 +19,9 @@ export const renderGallery = (wrapper, photos) => {
         isFitWidth: true,
     })
 
-    const cards = photos.map(createCardPhoto);
+    const cards = photos.map(photo => {
+        return createCardPhoto(photo)
+    });
 
     Promise.all(cards)
     .then(cards => {

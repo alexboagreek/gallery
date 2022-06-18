@@ -4,13 +4,18 @@ import { createCardPhoto } from './createCardPhoto.js';
 
 
 export const scrollLoad = (gallery, grid, lastElement) => {
+  
+
+  let i = 1;
 
   const observer = new IntersectionObserver(
 
    async (entries) => {
       if (entries[0].isIntersecting) {
-        const photos = await getData();
-        const cards = photos.map(createCardPhoto);
+        const photos = await getData({ page: ++i, count: 30 });
+        const cards = photos.map(photo => {
+            return createCardPhoto(photo)}
+            );
 
 
         Promise.all(cards)

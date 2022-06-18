@@ -31,7 +31,7 @@ export const createCardPhoto = async (data) => {
     });
    
 
-    const photo = await loadingImg(data.urls.small, data.alt_description); 
+    const photo = await loadingImg(data.urls.small, data.description); 
     
 
     const author = createElementMagic('a', {
