@@ -11,7 +11,7 @@ const loadingImg = (url, description) => {
             resolve(img)
         });
         img.addEventListener('error', (err) => {
-            reject(new Error(err))
+            reject(new Error(err));
         });
 
     })
@@ -20,7 +20,7 @@ const loadingImg = (url, description) => {
 export const createCardPhoto = async (data) => {
  
     const card = createElementMagic('li', {
-        className: 'card'
+        className: 'card',
     });
     
     
@@ -31,7 +31,7 @@ export const createCardPhoto = async (data) => {
     });
    
 
-    const photo = await loadingImg(data.urls.small, data.description); 
+    const photo = await loadingImg(data.urls.small, data.description || data.description); 
     
 
     const author = createElementMagic('a', {
